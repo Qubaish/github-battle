@@ -1,34 +1,6 @@
 const React = require("react");
 const PropTypes = require("prop-types");
 
-function PlayerPreview(props){
-  return(
-    <div>
-      <div className="column">
-        <img
-          className='avatar'
-          src={props.avatar}
-          alt={'Avatar for ' + props.username}
-        />
-        <h2 className="username">@{props.username}</h2>
-        <button
-          className='reset'
-          onClick={props.onReset.bind(null, props.id)}
-          >
-         Reset
-        </button>
-      </div>
-    </div>
-  )
-}
-
-PlayerPreview.propTypes ={
-  username: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  avatar: PropTypes.string.isRequired,
-  onReset: PropTypes.func.isRequired
-}
-
 class PlayerInput extends React.Component{
   constructor(props){
     super(props);
@@ -85,4 +57,4 @@ PlayerInput.propTypes = {
   onSubmit: PropTypes.func.isRequired
 }
 
-module.exports = {PlayerInput, PlayerPreview};
+module.exports = PlayerInput;

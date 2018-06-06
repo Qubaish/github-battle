@@ -1,6 +1,7 @@
 const React = require('react');
-import {PlayerInput, PlayerPreview} from './PlayerInput';
+import PlayerInput from './PlayerInput';
 const Link = require('react-router-dom').Link;
+const PlayerPreview = require('./PlayerPreview');
 
 class Battle extends React.Component {
   constructor(props){
@@ -48,13 +49,18 @@ class Battle extends React.Component {
               onSubmit={this.handleSubmit}
           />}
 
-          {playerOneImage !== null && 
+         
+          {playerOneImage !== null &&
             <PlayerPreview
               avatar={playerOneImage}
-              username={playerOneName}
-              onReset={this.handleReset}
-              id='playerOne'
-            />}
+              username={playerOneName}>
+                <button
+                  className='reset'
+                  onClick={this.handleReset.bind(this, 'playerOne')}>
+                    Reset
+                </button>
+            </PlayerPreview>}
+
 
           {!playerTwoName && 
             <PlayerInput 
@@ -63,13 +69,16 @@ class Battle extends React.Component {
               onSubmit={this.handleSubmit}
             />}
 
-            {playerTwoImage !== null && 
+            {playerTwoImage !== null &&
             <PlayerPreview
               avatar={playerTwoImage}
-              username={playerTwoName}
-              onReset={this.handleReset}
-              id='playerTwo'
-            />}
+              username={playerTwoName}>
+                <button
+                  className='reset'
+                  onClick={this.handleReset.bind(this, 'playerTwo')}>
+                    Reset
+                </button>
+            </PlayerPreview>}
         </div>
         {playerOneImage && playerTwoImage && 
           <Link
